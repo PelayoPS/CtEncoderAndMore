@@ -1,0 +1,4 @@
+mov/r2/r1
+inc/r1
+nop
+jmp/r1
