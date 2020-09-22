@@ -56,9 +56,8 @@ public class Main {
 				try {
 					out.println("Please enter the frecuency in MHz:");
 					double frecuency = Double.valueOf(sc.next());
-					EncodeFileMode.run(out, sc);
+					EncodeFileMode.run(out, sc, frecuency);
 					double time = EncodeFileMode.getCycles() * (1/(frecuency*1000000));
-					out.println("Time to execute: " + time);
 					totalTime += time;
 					out.println("Total time to execute: " + totalTime);
 				} catch (Exception e) {

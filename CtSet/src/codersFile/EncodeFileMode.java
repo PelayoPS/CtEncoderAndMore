@@ -16,12 +16,12 @@ public class EncodeFileMode {
 	private static PrintStream out;
 	private static Scanner sc;
 	private static String internalEncoding;
+	private static double cycles = 0;
 
-	public static void run(PrintStream outStream, Scanner scanner) {
+	public static void run(PrintStream outStream, Scanner scanner, double frecuency) {
 		out = outStream;
 		sc = scanner;
 		
-		out.println("Please use / as separator, breaks otherwise.");
 		out.println("Archive to read?  ");
 		out.println("Use 'Ext' to exit.");
 		String option = sc.next();
@@ -35,6 +35,9 @@ public class EncodeFileMode {
 				String aux2 = String.format("Encode hex: %s", 
 							EncodeThings.encodeHex(internalEncoding));
 				out.println(aux + "\n" + aux2 + "\n");
+				cycles += Steps.getCycles();
+				double time = Steps.getCycles() * (1/(frecuency*1000000));
+				out.println("Time to execute: " + time);
 			}
 		}  catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
@@ -43,7 +46,7 @@ public class EncodeFileMode {
 	}
 	
 	public static double getCycles() {
-		return Steps.getCycles();
+		return cycles;
 	}
 	
 	private static String encodeMode(String s) {

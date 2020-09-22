@@ -1,0 +1,7 @@
+movl/r1/1
+movh/r1/0
+movl/r2/225
+movh/r2/245
+dec/r1
+brs/47929‬
+and/r1/r1/r2
